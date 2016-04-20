@@ -34,3 +34,7 @@ class VendFinderView(object):
         @self.app.route('/<user>')
         def index(user):
             return render_template('index.html', user=user)
+
+        @self.app.route('/')
+        def nouser():
+            return redirect(url_for('index', user='default'))
