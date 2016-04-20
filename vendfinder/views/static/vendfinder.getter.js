@@ -30,14 +30,14 @@ function ischanged(data) {
         return true;
     }
 
-    for (i = 0; i < lastData.length;i++) {
-        for (j = 0; j < data.length; j++) {
-            if (lastData[i]['item'] == data[j]['item'] &&
-                    lastData[i]['shop'] == data[j]['shop']) {
+    for (i = 0; i < data.length; i++) {
+        for (j = 0; j < lastData.length; j++) {
+            if (data[i]['item'] == lastData[j]['item'] &&
+                    data[i]['shop'] == lastData[j]['shop']) {
                 break;
             }
 
-            if (j == data.length - 1) {
+            if (j == lastData.length - 1) {
                 return true;
             }
         }
