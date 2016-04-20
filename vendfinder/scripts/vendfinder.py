@@ -72,7 +72,15 @@ class VendFinder(object):
 
         user_file = os.path.join(vf_dir, user)
         if (not os.path.isfile(user_file)):
-            with open(user_file, 'w+'):
-                pass
+            self.create_user_config(user_file)
 
         return user_file
+
+    def create_user_config(self, user_file):
+        with open(user_file, 'w+') as f:
+            f.write('# syntax: <item_id>:<item_price>\n')
+            f.write('# will display all items with <item_id> that are being sold less than <item_price>\n')
+            f.write('# comments: lines starting with # are not read\n')
+            f.write('\n')
+            f.write('# grape juice\n')
+            f.write('533:400\n')
