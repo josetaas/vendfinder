@@ -14,6 +14,6 @@ $( document ).ready(function() {
                 $('#vendors tbody').append(row);
             }
         });
-        setTimeout(get_vendors, 5000);
+        setTimeout(get_vendors, 2000);
     });
 });
