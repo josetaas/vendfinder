@@ -1,5 +1,4 @@
 import os
-from json import dumps
 
 from flask import Flask, redirect, render_template, request, url_for
 from flask_bootstrap import Bootstrap
@@ -17,7 +16,7 @@ class VendFinderView(object):
 
         @self.app.route('/<user>/get_vendors')
         def get_vendors(user):
-            return dumps(self.view_model.get_vendors(user))
+            return self.view_model.get_vendors(user)
 
         @self.app.route('/<user>/edit', methods=['GET', 'POST'])
         def edit(user):
@@ -29,7 +28,7 @@ class VendFinderView(object):
 
         @self.app.route('/<user>/get_config')
         def get_config(user):
-            return dumps(self.view_model.get_config(user))
+            return self.view_model.get_config(user)
 
         @self.app.route('/<user>')
         def index(user):
@@ -38,3 +37,7 @@ class VendFinderView(object):
         @self.app.route('/')
         def nouser():
             return redirect(url_for('index', user='default'))
+
+
+if __name__ == '__main__':
+    VendFinderView().app.run()

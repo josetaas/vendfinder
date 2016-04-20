@@ -1,3 +1,6 @@
+from hashlib import sha1
+from json import dumps
+
 from vendfinder.scripts.configparser import ConfigParser
 from vendfinder.scripts.vendfinder import VendFinder
 import vendfinder
@@ -21,13 +24,13 @@ class VendFinderViewModel(object):
             except KeyError as e:
                 continue
 
-        return items
+        return dumps(items)
 
     def get_config(self, user):
         config = self.vend_finder.get_user_config(user)
         with open(config, 'r') as f:
             data = f.read()
-        return data
+        return dumps(data)
 
     def save_config(self, user, data):
         config = self.vend_finder.get_user_config(user)
