@@ -45,6 +45,12 @@ class VendFinder(object):
             link_factory.keys['item_id'] = item_tuple[0]
             link_factory.keys['price'] = item_tuple[1]
             link_factory.keys['price_op'] = 'lt'
+
+            try:
+                link_factory.keys['refine'] = item_tuple[2]
+            except IndexError:
+                pass
+
             links.append((item_tuple, link_factory.create()))
 
         for link_tuple in links:

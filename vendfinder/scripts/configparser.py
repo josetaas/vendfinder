@@ -14,7 +14,10 @@ class ConfigParser(object):
                 continue
 
             values = line.split(':')
-            item_tuples.append((values[0], values[1]))
+            try:
+                item_tuples.append((values[0], values[1], values[2]))
+            except IndexError:
+                item_tuples.append((values[0], values[1]))
         return item_tuples
 
     def read_raw(self):
